@@ -86,4 +86,18 @@ public class Jugador {
     public void setImage(String image) {
         this.image = image;
     }
+
+    @Override
+    public String toString() {
+        return "Jugador{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", team='" + team + '\'' +
+                ", age=" + age +
+                ", nationality='" + nationality + '\'' +
+                ", marketValue=" + marketValue +
+                ", position='" + position + '\'' +
+                ", image='" + image + '\'' +
+                '}';
+    }
 }

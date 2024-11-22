@@ -58,10 +58,10 @@ public class FirstFragment extends Fragment {
         });
 
         binding.jugadoresList.setOnItemClickListener((adapterView, fragment, i, l) -> {
-            String pokemon = adapter.getItem(i);
+            String jugador = adapter.getItem(i);
             Bundle args = new Bundle();
-            args.putSerializable("Pokemon", pokemon);
-            Log.d("XXX", pokemon.toString());
+            args.putSerializable("Jugador", jugador);
+            Log.d("XXX", jugador.toString());
             NavHostFragment.findNavController(FirstFragment.this)
                     .navigate(R.id.action_FirstFragment_to_SecondFragment, args);
         });
@@ -100,7 +100,7 @@ public class FirstFragment extends Fragment {
 
         executor.execute(() -> {
             SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
-            String species = preferences.getString("species", "");
+            String posicion = preferences.getString("posicion", "");
             Toast.makeText(null, "", Toast.LENGTH_SHORT).show();
         });
     }
