@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/imgJugadorDetalles"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <TextView
+        android:id="@+id/txtJugadorNombreDetalles"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imgJugadorDetalles"
+        app:layout_constraintTop_toTopOf="@+id/imgJugadorDetalles" />
+
+    <TextView
+        android:id="@+id/txtJugadorPosicionDetalles"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        app:layout_constraintBottom_toTopOf="@+id/txtJugadorEquipoDetalles"
+        app:layout_constraintEnd_toEndOf="@+id/txtJugadorNombreDetalles"
+        app:layout_constraintStart_toStartOf="@+id/txtJugadorNombreDetalles"
+        app:layout_constraintTop_toBottomOf="@+id/txtJugadorNombreDetalles" />
+
+    <TextView
+        android:id="@+id/txtJugadorEquipoDetalles"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="@+id/imgJugadorDetalles"
+        app:layout_constraintEnd_toEndOf="@+id/txtJugadorPosicionDetalles"
+        app:layout_constraintStart_toStartOf="@+id/txtJugadorPosicionDetalles" />
+</androidx.constraintlayout.widget.ConstraintLayout>
