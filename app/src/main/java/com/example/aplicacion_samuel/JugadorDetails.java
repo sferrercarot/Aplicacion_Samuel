@@ -13,8 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.bumptech.glide.Glide;
-import com.example.jugador.databinding.FragmentPokemonsDetailsBinding;
-
+import com.example.aplicacion_samuel.databinding.FragmentJugadorDetailsBinding;
 
 public class JugadorDetails extends Fragment {
 
@@ -25,11 +24,11 @@ public class JugadorDetails extends Fragment {
     }
 
     private JugadorDetailsViewModel mViewModel;
-    private FragmentPokemonsDetailsBinding binding;
+    private FragmentJugadorDetailsBinding binding;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        binding = FragmentPokemonsDetailsBinding.inflate(inflater, container, false);
+        binding = FragmentJugadorDetailsBinding.inflate(inflater, container, false);
         return binding.getRoot();
     }
 
@@ -52,10 +51,10 @@ public class JugadorDetails extends Fragment {
 
     private void mostrarJugador(Jugador jugador) {
         Log.d("JUGADOR",jugador.toString());
-        binding.txtPokemonNamesDetails.setText(jugador.getName());
-        binding.txtPokemonSpriteDetails.setText(jugador.getPosition());
-        binding.txtPokemonSpeciesDetails.setText(jugador.getTeam());
-        Glide.with(getContext()).load(jugador.getName()).into(binding.imgPokemonSpriteDetails);
+        binding.txtJugadorNombreDetalles.setText(jugador.getName());
+        binding.txtJugadorPosicionDetalles.setText(jugador.getPosition());
+        binding.txtJugadorEquipoDetalles.setText(jugador.getTeam());
+        Glide.with(getContext()).load(jugador.getName()).into(binding.imgJugadorDetalles);
     }
 
     @Override
