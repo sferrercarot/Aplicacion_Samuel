@@ -6,13 +6,13 @@ public class Jugador {
     private String team;
     private int age;
     private String nationality;
-    private double marketValue;
+    private String marketValue;
     private String position;
     private String image;
 
     public Jugador(){}
 
-    public Jugador(int id, String name, String team, int age, String nationality, double marketValue, String position, String image) {
+    public Jugador(int id, String name, String team, int age, String nationality, String marketValue, String position, String image) {
         this.id = id;
         this.name = name;
         this.team = team;
@@ -63,11 +63,11 @@ public class Jugador {
         this.nationality = nationality;
     }
 
-    public double getMarketValue() {
+    public String getMarketValue() {
         return marketValue;
     }
 
-    public void setMarketValue(double marketValue) {
+    public void setMarketValue(String marketValue) {
         this.marketValue = marketValue;
     }
 
