@@ -27,42 +27,41 @@ import java.util.concurrent.Executors;
 public class FirstFragment extends Fragment {
 
     private FragmentFirstBinding binding;
-    ArrayList<String> jugadoresFutbol;
-    private JugadorAdapter adapter;
+    ArrayList<Jugador> jugadoresFutbol;
+    ArrayAdapter<Jugador> adapter;
+    JugadorDetailsViewModel viewModel;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        jugadoresFutbol = new ArrayList<>();
         binding = FragmentFirstBinding.inflate(inflater, container, false);
+        jugadoresFutbol = new ArrayList<>();
         setHasOptionsMenu(true);
         return binding.getRoot();
     }
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(
-                getContext(),
-                R.layout.jugadores_lista,
-                R.id.txtNombreJugadores,
-                jugadoresFutbol);
-        binding.jugadoresList.setAdapter(adapter);
-
+        jugadoresFutbol = new ArrayList<>();
         ExecutorService executor = Executors.newSingleThreadExecutor();
         executor.execute(() -> {
-            ArrayList<Jugador> jugadores = JugadorAPI.buscar();
-            getActivity().runOnUiThread(() -> {
-                for (Jugador p : jugadores) {
-                    jugadoresFutbol.add(p.getName());
-                }
-                adapter.notifyDataSetChanged();
-            });
-        });
+                    ArrayList<Jugador> jugadores = JugadorAPI.buscar();
+                    getActivity().runOnUiThread(() -> {
+                        for (Jugador p : jugadores) {
+                            jugadoresFutbol.add(p);
+                        }
+                        adapter.notifyDataSetChanged();
+                    });
+                });
+        adapter = new JugadorAdapter(getContext(), R.layout.jugadores_lista, jugadoresFutbol);
+        binding.jugadoresList.setAdapter(adapter);
+
 
         binding.jugadoresList.setOnItemClickListener((adapterView, fragment, i, l) -> {
-            String jugador = adapter.getItem(i);
+            Jugador jugador = adapter.getItem(i);
+            Toast.makeText(getContext(), "CLICK!", Toast.LENGTH_SHORT).show();
+            Log.d("XXX", jugador.toString());
             Bundle args = new Bundle();
             args.putSerializable("Jugador", jugador);
-            Log.d("XXX", jugador.toString());
             NavHostFragment.findNavController(FirstFragment.this)
                     .navigate(R.id.action_FirstFragment_to_SecondFragment, args);
         });
@@ -74,13 +73,11 @@ public class FirstFragment extends Fragment {
         int id = item.getItemId();
 
         if (id == R.id.action_refresh) {
-            Toast.makeText(getContext(), "Click!", Toast.LENGTH_SHORT).show();
-            Log.d("XXXMenu", "Click");
+            Toast.makeText(getContext(), "Actualizado", Toast.LENGTH_SHORT).show();
+            Log.d("XXXMenu", "Actualizado");
         }
 
         if (id == R.id.action_settings) {
-            Toast.makeText(getContext(), "Click!", Toast.LENGTH_SHORT).show();
-            Log.d("XXXMenu", "Click");
             Intent i = new Intent(getActivity(), SettingsActivity.class);
             startActivity(i);
             return true;
@@ -97,12 +94,27 @@ public class FirstFragment extends Fragment {
 
     void refresh() {
         ExecutorService executor = Executors.newSingleThreadExecutor();
-        Handler handler = new Handler(Looper.getMainLooper());
-
         executor.execute(() -> {
-            SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
-            String posicion = preferences.getString("posicion", "");
-            Toast.makeText(null, "", Toast.LENGTH_SHORT).show();
+            ArrayList<Jugador> jugadores = JugadorAPI.buscar();
+            jugadoresFutbol.clear();
+
+            getActivity().runOnUiThread(() -> {
+                for (Jugador p : jugadores) {
+                    Log.d("XXX", p.toString());
+
+                    jugadoresFutbol.add(p);
+                }
+                adapter.notifyDataSetChanged();
+            });
         });
+
+        binding.jugadoresList.setOnItemClickListener((adapterView, fragment, i, l) -> {
+            Jugador jugador = adapter.getItem(i);
+            Bundle args = new Bundle();
+            args.putSerializable("Jugador", jugador);
+            Log.d("XXX", jugador.toString());
+        });
+
+
     }
 }

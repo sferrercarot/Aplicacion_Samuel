@@ -1,6 +1,8 @@
 package com.example.aplicacion_samuel;
 
-public class Jugador {
+import java.io.Serializable;
+
+public class Jugador implements Serializable {
     private int id;
     private String name;
     private String team;

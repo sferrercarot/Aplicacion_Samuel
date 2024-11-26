@@ -15,21 +15,17 @@ import java.util.ArrayList;
 
 public class JugadorAPI {
     private final String BASE_URL = "https://cmesgiwjcpziurvoeltr.supabase.co/rest/v1/Jugadores_futbol?apikey=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNtZXNnaXdqY3B6aXVydm9lbHRyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzE2NjE5MjMsImV4cCI6MjA0NzIzNzkyM30.RFFz-C9ihA-spGEBux0-l4BJu2ZCA_3bh5kNkOj-6tk";
-    private final String API_KEY = "<api-key>";
 
-    String getJugadorsMesCaros(String marketValue) {
+    String getNames(String marketValue) {
         Uri builtUri = Uri.parse(BASE_URL)
                 .buildUpon()
                 .appendPath("jugadores")
-                .appendQueryParameter("marketValue", marketValue)
-                .appendQueryParameter("api_key", API_KEY)
                 .build();
         String url = builtUri.toString();
 
         return doCall(url);
     }
 
-    @OptIn(markerClass = UnstableApi.class)
     public static ArrayList<Jugador> buscar() {
         ArrayList<Jugador> jugadores = new ArrayList<>();
         try {
@@ -46,12 +42,6 @@ public class JugadorAPI {
                 String marketValue = jugadorObj.getString("market value");
                 String position = jugadorObj.getString("position");
                 String image = jugadorObj.getString("image");
-
-
-                String jugaforDetailsResponse = HttpUtils.get("https://cmesgiwjcpziurvoeltr.supabase.co/rest/v1/Jugadores_futbol?apikey=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNtZXNnaXdqY3B6aXVydm9lbHRyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzE2NjE5MjMsImV4cCI6MjA0NzIzNzkyM30.RFFz-C9ihA-spGEBux0-l4BJu2ZCA_3bh5kNkOj-6tk");
-                JSONArray jugadorDetalils = new JSONArray(jugaforDetailsResponse);
-
-                Log.d("DEBUG", "JSON de " + name + ": " + jugadorDetalils);
 
                 Jugador jugador = new Jugador(id, name, team, age, nationality, marketValue, position, image);
                 jugadores.add(jugador);

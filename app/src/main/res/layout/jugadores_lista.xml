@@ -3,25 +3,34 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:backgroundTint="@color/material_dynamic_neutral20"
+    android:backgroundTintMode="multiply">
 
+    <!-- Imagen del jugador -->
     <ImageView
         android:id="@+id/imgJugadores"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="125dp"
+        android:layout_height="100dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:srcCompat="@tools:sample/avatars" />
 
+    <!-- Nombre del jugador -->
     <TextView
         android:id="@+id/txtNombreJugadores"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TextView"
+        android:layout_width="195dp"
+        android:layout_height="36dp"
+        android:text="Nombre del Jugador"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold|italic"
         app:layout_constraintBottom_toBottomOf="@+id/imgJugadores"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/imgJugadores"
-        app:layout_constraintTop_toTopOf="@id/imgJugadores" />
+        app:layout_constraintTop_toTopOf="@+id/imgJugadores" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -23,7 +23,6 @@ public class JugadorDetails extends Fragment {
     public JugadorDetails() {
     }
 
-    private JugadorDetailsViewModel mViewModel;
     private FragmentDetailsBinding binding;
 
     @Override
@@ -56,11 +55,4 @@ public class JugadorDetails extends Fragment {
         binding.txtJugadorEquipoDetalles.setText(jugador.getTeam());
         Glide.with(requireContext()).load(jugador.getImage()).into(binding.imgJugadorDetalles);
     }
-
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        mViewModel = new ViewModelProvider(this).get(JugadorDetailsViewModel.class);
-    }
-
 }

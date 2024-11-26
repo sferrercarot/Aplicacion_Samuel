@@ -17,8 +17,8 @@ import java.util.List;
 
 public class JugadorAdapter extends ArrayAdapter<Jugador> {
 
-    public JugadorAdapter(@NonNull Context context, @NonNull List<Jugador> objects) {
-        super(context, 0, objects);
+    public JugadorAdapter(@NonNull Context context, int resource, @NonNull List<Jugador> objects) {
+        super(context, resource, objects);
     }
 
     @NonNull
@@ -26,17 +26,16 @@ public class JugadorAdapter extends ArrayAdapter<Jugador> {
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
 
         Jugador jugador = getItem(position);
-        LayoutInflater inflater;
+
         if (convertView == null) {
-            inflater = LayoutInflater.from(getContext());
+            LayoutInflater inflater = LayoutInflater.from(getContext());
             convertView = inflater.inflate(R.layout.jugadores_lista, parent, false);
         }
         TextView txtNombreJugador = convertView.findViewById(R.id.txtNombreJugadores);
         txtNombreJugador.setText(jugador.getName());
+
         ImageView imagenJugador = convertView.findViewById(R.id.imgJugadores);
-        Glide.with(getContext()).load(
-                jugador.getImage())
-                .into(imagenJugador);
+        Glide.with(getContext()).load(jugador.getImage()).into(imagenJugador);
 
         return convertView;
     }
