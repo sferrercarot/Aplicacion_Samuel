@@ -13,7 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.bumptech.glide.Glide;
-import com.example.aplicacion_samuel.databinding.FragmentJugadorDetailsBinding;
+import com.example.aplicacion_samuel.databinding.FragmentDetailsBinding;
 
 public class JugadorDetails extends Fragment {
 
@@ -24,11 +24,11 @@ public class JugadorDetails extends Fragment {
     }
 
     private JugadorDetailsViewModel mViewModel;
-    private FragmentJugadorDetailsBinding binding;
+    private FragmentDetailsBinding binding;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        binding = FragmentJugadorDetailsBinding.inflate(inflater, container, false);
+        binding = FragmentDetailsBinding.inflate(inflater, container, false);
         return binding.getRoot();
     }
 
@@ -54,7 +54,7 @@ public class JugadorDetails extends Fragment {
         binding.txtJugadorNombreDetalles.setText(jugador.getName());
         binding.txtJugadorPosicionDetalles.setText(jugador.getPosition());
         binding.txtJugadorEquipoDetalles.setText(jugador.getTeam());
-        Glide.with(getContext()).load(jugador.getName()).into(binding.imgJugadorDetalles);
+        Glide.with(requireContext()).load(jugador.getImage()).into(binding.imgJugadorDetalles);
     }
 
     @Override

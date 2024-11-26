@@ -17,8 +17,8 @@ import java.util.List;
 
 public class JugadorAdapter extends ArrayAdapter<Jugador> {
 
-    public JugadorAdapter(@NonNull Context context, int resource, @NonNull List<Jugador> objects) {
-        super(context, resource, objects);
+    public JugadorAdapter(@NonNull Context context, @NonNull List<Jugador> objects) {
+        super(context, 0, objects);
     }
 
     @NonNull
@@ -35,8 +35,8 @@ public class JugadorAdapter extends ArrayAdapter<Jugador> {
         txtNombreJugador.setText(jugador.getName());
         ImageView imagenJugador = convertView.findViewById(R.id.imgJugadores);
         Glide.with(getContext()).load(
-                jugador.getTeam()
-        ).into(imagenJugador);
+                jugador.getImage())
+                .into(imagenJugador);
 
         return convertView;
     }

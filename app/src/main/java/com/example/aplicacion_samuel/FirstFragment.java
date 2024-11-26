@@ -28,6 +28,7 @@ public class FirstFragment extends Fragment {
 
     private FragmentFirstBinding binding;
     ArrayList<String> jugadoresFutbol;
+    private JugadorAdapter adapter;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
