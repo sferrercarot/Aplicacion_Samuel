@@ -58,7 +58,7 @@ public class FirstFragment extends Fragment {
 
         binding.jugadoresList.setOnItemClickListener((adapterView, fragment, i, l) -> {
             Jugador jugador = adapter.getItem(i);
-            Toast.makeText(getContext(), "CLICK!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getContext(), "Cargando...", Toast.LENGTH_SHORT).show();
             Log.d("XXX", jugador.toString());
             Bundle args = new Bundle();
             args.putSerializable("Jugador", jugador);
