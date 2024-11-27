@@ -1,11 +1,7 @@
 package com.example.aplicacion_samuel;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
-import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -63,7 +59,7 @@ public class FirstFragment extends Fragment {
             Bundle args = new Bundle();
             args.putSerializable("Jugador", jugador);
             NavHostFragment.findNavController(FirstFragment.this)
-                    .navigate(R.id.action_FirstFragment_to_SecondFragment, args);
+                    .navigate(R.id.action_FirstFragment_to_fragmentDetails, args);
         });
 
     }

@@ -27,7 +27,7 @@
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="20sp"
-        android:textStyle="bold|italic"
+        android:textStyle=""
         app:layout_constraintBottom_toBottomOf="@+id/imgJugadores"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/imgJugadores"
