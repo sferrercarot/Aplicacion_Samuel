@@ -1,7 +1,6 @@
 package com.example.aplicacion_samuel;
 
 
-import androidx.lifecycle.ViewModelProvider;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -53,7 +52,7 @@ public class JugadorDetails extends Fragment {
         binding.txtJugadorNombreDetalles.setText(jugador.getName());
         binding.txtJugadorPosicionDetalles.setText(jugador.getPosition());
         binding.txtJugadorEquipoDetalles.setText(jugador.getTeam());
-        binding.txtJugadorEdadDetalles.setText(String.valueOf(jugador.getAge()) + " años");
+        binding.txtJugadorEdadDetalles.setText((jugador.getAge()) + " años");
         binding.txtJugadorNacionalidadDetalles.setText(jugador.getNationality());
         binding.txtJugadorValorDetalles.setText(jugador.getMarketValue());
         Glide.with(requireContext()).load(jugador.getImage()).into(binding.imgJugadorDetalles);
