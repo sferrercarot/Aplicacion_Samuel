@@ -49,10 +49,14 @@ public class JugadorDetails extends Fragment {
     }
 
     private void mostrarJugador(Jugador jugador) {
-        Log.d("JUGADOR",jugador.toString());
+        Log.d("JUGADOR", jugador.toString());
         binding.txtJugadorNombreDetalles.setText(jugador.getName());
         binding.txtJugadorPosicionDetalles.setText(jugador.getPosition());
         binding.txtJugadorEquipoDetalles.setText(jugador.getTeam());
+        binding.txtJugadorEdadDetalles.setText(String.valueOf(jugador.getAge()) + " años");
+        binding.txtJugadorNacionalidadDetalles.setText(jugador.getNationality());
+        binding.txtJugadorValorDetalles.setText(jugador.getMarketValue());
         Glide.with(requireContext()).load(jugador.getImage()).into(binding.imgJugadorDetalles);
     }
+
 }
