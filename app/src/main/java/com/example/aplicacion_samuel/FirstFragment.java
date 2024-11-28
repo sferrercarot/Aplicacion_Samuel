@@ -62,6 +62,7 @@ public class FirstFragment extends Fragment {
                     .navigate(R.id.action_FirstFragment_to_fragmentDetails, args);
         });
 
+
     }
 
     @Override
@@ -71,6 +72,7 @@ public class FirstFragment extends Fragment {
         if (id == R.id.action_refresh) {
             Toast.makeText(getContext(), "Actualizado", Toast.LENGTH_SHORT).show();
             Log.d("XXXMenu", "Actualizado");
+            refresh();
         }
 
         if (id == R.id.action_settings) {
