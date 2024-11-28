@@ -1,8 +1,13 @@
 package com.example.aplicacion_samuel;
 
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
 import java.io.Serializable;
 
+@Entity(tableName = "Jugadores_futbol")
 public class Jugador implements Serializable {
+    @PrimaryKey(autoGenerate = true)
     private int id;
     private String name;
     private String team;

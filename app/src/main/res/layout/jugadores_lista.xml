@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/fotoiniesta"
     android:backgroundTint="@color/material_dynamic_neutral20"
     android:backgroundTintMode="multiply">
 
@@ -25,7 +26,7 @@
         android:layout_height="36dp"
         android:text="Nombre del Jugador"
         android:textAlignment="center"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         android:textSize="20sp"
         android:textStyle=""
         app:layout_constraintBottom_toBottomOf="@+id/imgJugadores"
