@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.aplicacion_samuel.databinding.FragmentFirstBinding;
@@ -25,7 +26,7 @@ public class FirstFragment extends Fragment {
     private FragmentFirstBinding binding;
     ArrayList<Jugador> jugadoresFutbol;
     ArrayAdapter<Jugador> adapter;
-    JugadorDetailsViewModel viewModel;
+    JugadoresViewModel viewModel;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -62,6 +63,11 @@ public class FirstFragment extends Fragment {
                     .navigate(R.id.action_FirstFragment_to_fragmentDetails, args);
         });
 
+        viewModel = new ViewModelProvider(this).get(JugadoresViewModel.class);
+        viewModel.getJugadores().observe(getViewLifecycleOwner(), jugadoresFutbol -> {
+            adapter.clear();
+            adapter.addAll(jugadoresFutbol);
+        });
 
     }
 
