@@ -30,15 +30,12 @@ public class FirstFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         binding = FragmentFirstBinding.inflate(inflater, container, false); // Inicialización de binding
-        jugadoresFutbol = new ArrayList<>(); // Inicialización de la lista de jugadores
         setHasOptionsMenu(true);
         return binding.getRoot();
     }
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
-        jugadoresFutbol = new ArrayList<>();
 
         // Carga de jugadores desde la API en un hilo separado
         ExecutorService executor = Executors.newSingleThreadExecutor();
@@ -80,13 +77,6 @@ public class FirstFragment extends Fragment {
             Log.d("XXXMenu", "Actualizado");
             refresh(); // Llama al método refresh
         }
-
-        if (id == R.id.action_settings) {
-            Intent i = new Intent(getActivity(), SettingsActivity.class);
-            startActivity(i);
-            return true;
-        }
-
         return super.onOptionsItemSelected(item);
     }
 
@@ -109,17 +99,8 @@ public class FirstFragment extends Fragment {
                     jugadoresFutbol.add(p); // Agrega los nuevos jugadores a la lista
                 }
                 adapter.notifyDataSetChanged();
+                viewModel.reload();
             });
-        });
-
-        binding.jugadoresList.setOnItemClickListener((adapterView, fragment, i, l) -> {
-            Jugador jugador = adapter.getItem(i); // Obtiene el jugador seleccionado
-            Toast.makeText(getContext(), "Cargando...", Toast.LENGTH_SHORT).show(); // Mensaje de carga
-            Log.d("XXX", jugador.toString());
-            Bundle args = new Bundle(); //
-            args.putSerializable("Jugador", jugador); // Agrega el jugador al Bundle
-            NavHostFragment.findNavController(FirstFragment.this)
-                    .navigate(R.id.action_FirstFragment_to_fragmentDetails, args);
         });
     }
 }
